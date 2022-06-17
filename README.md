@@ -29,6 +29,8 @@ Include one or more of the following snippets to display your movies or shows on
 
 ## Example 
 
+https://mirthe.org/series/
+
 <img src="example-episodes.png" alt="Example episodes">
 
 ## Todo
