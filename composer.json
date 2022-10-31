@@ -1,5 +1,6 @@
 {
     "name": "mirthe/mytrakt",
+    "version": "1.0",
     "description": "Show recently watched and favorite shows & movies for a Trakt account",
     "homepage": "https://github.com/mirthe/mytrakt",
     "keywords": ["kirby-plugin", "trakt", "movies", "television", "tv", "history", "favorite", "log"],
