@@ -36,7 +36,6 @@ foreach ($json_a as $key => $value): ?>
 
         <p><a href="<?= $varlink ?>" class="subtiel" title="Bekijken op IMDb"><?= $value['movie']['title'] ?>
         <small>(<?= $value['movie']['year'] ?>)</small></a><br>
-        <!-- <span style="color: silver"><?= strftime("%e %b %Y", strtotime($value['watched_at'])) ?></span></p> -->
         
         <p><strong><?= $value['movie']['tagline'] ?></strong></p>
         <p><?= mb_strimwidth($value['movie']['overview'],0,300,'&hellip;') ?></p>

@@ -23,7 +23,7 @@ foreach ($json_a as $key => $value): ?>
     <?php if (array_key_exists('poster_path',$movieinfo) && $movieinfo['poster_path'] !== NULL): ?>
         <a href="<?= $varlink ?>"><img class="block--img" 
             width="500" height="500" 
-            loading="lazy" src="<?= "https://image.tmdb.org/t/p/w500" . $movieinfo['poster_path'] ?>" 
+            loading="lazy" src="<?= "https://image.tmdb.org/t/p/w500" . $movieinfo['poster_path'] ?>"
             alt="Still from <?= $value[$value['type']]['title'] ?>"></a>
     <?php else: ?>
         <a href="<?= $varlink ?>" class="block--fallback"></a>
@@ -33,11 +33,10 @@ foreach ($json_a as $key => $value): ?>
 
         <p><a href="<?= $varlink ?>"><?= $value[$value['type']]['title'] ?></a>
         <small>(<?= $value[$value['type']]['year'] ?>)</small></a><br>
-        <!-- <span style="color: silver"><?= strftime("%e %b %Y", strtotime($value['listed_at'])) ?></span></p> -->
         
         <?php if (array_key_exists('overview',$movieinfo) and $movieinfo['overview'] !== NULL): ?>
             <p><strong><?= $movieinfo['tagline'] ?></strong></p> 
-            <p><?= mb_strimwidth($movieinfo['overview'],0,400,'&hellip;') ?></p>        
+            <p><?= mb_strimwidth($movieinfo['overview'],0,400,'&hellip;') ?></p>
         <?php endif ?>
 
         <?php /* Notes zitten alleen in de IOS app begreep ik, Android en website volgen nog. Ooit.

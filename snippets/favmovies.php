@@ -34,7 +34,6 @@ $varlink = "https://trakt.tv/movies/" . $value[$value['type']]['ids']['slug'] ?>
 
         <p><a href="<?= $varlink ?>"><?= $value[$value['type']]['title'] ?></a>
         <small>(<?= $value[$value['type']]['year'] ?>)</small></a><br>
-        <!-- <span style="color: silver"><?= strftime("%e %b %Y", strtotime($value['listed_at'])) ?></span></p> -->
         
         <?php if (array_key_exists('overview',$movieinfo) and $movieinfo['overview'] !== NULL): ?>
             <p><strong><?= $movieinfo['tagline'] ?></strong></p> 
