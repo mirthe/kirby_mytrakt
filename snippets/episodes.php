@@ -46,7 +46,9 @@ include('get-trakt.php'); ?>
                     <small>(<?= $value['show']['year'] ?>)</small></a><br>
             </p>
 
-            <p><?= mb_strimwidth($value['episode']['overview'], 0, 300, '&hellip;') ?></p>
+            <?php if($value['episode']['overview']): ?>
+                <p><?= mb_strimwidth($value['episode']['overview'], 0, 300, '&hellip;') ?></p>
+            <?php endif ?>
 
             <ul class="genres">
                 <?php foreach ($value['show']['genres'] as $genre) {
