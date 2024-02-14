@@ -16,6 +16,9 @@ foreach ($json_a as $key => $value):
         $value['show']['ids']['slug'] .
         "/seasons/" . $value['episode']['season'] .
         "/episodes/" . $value['episode']['number'];
+
+        $epnr = "S" . str_pad($value['episode']['season'],'2','0',STR_PAD_LEFT) .
+            "E". str_pad($value['episode']['number'],'2','0',STR_PAD_LEFT); 
     
     $imgcall = "https://api.themoviedb.org/3/tv/".
         $value['show']['ids']['tmdb'].
@@ -30,8 +33,7 @@ foreach ($json_a as $key => $value):
 
     <div class="block block--compact block--tv">
         <?php if (count($movieinfo['posters'])): ?>
-            <a href="<?= $varlink ?>" title="<?= $value['show']['title'] ?> - S<?= str_pad($value['episode']['season'],'2','0',STR_PAD_LEFT) ?>E<?= str_pad($value['episode']['number'],'2','0',STR_PAD_LEFT) ?> <?= $value['episode']['title'] ?>">
-                <img class="block--img" 
+            <a href="<?= $varlink ?>" title="<?= $value['show']['title'] ?> - <?= $epnr ?> <?= $value['episode']['title'] ?>"><img class="block--img" 
                     width="450" height="500" loading="lazy"
                     src="<?= "https://image.tmdb.org/t/p/w500" . $movieinfo['posters'][0]['file_path'] ?>"
                     alt="">
@@ -39,6 +41,9 @@ foreach ($json_a as $key => $value):
         <?php else: ?>
             <a href="<?= $varlink ?>" class="block--fallback"></a>
         <?php endif ?>
+        <div class="block__overlay">
+            <?= $epnr ?>
+        </div>
     </div>
 
     <?php $counter++;
