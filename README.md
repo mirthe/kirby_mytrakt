@@ -27,6 +27,10 @@ Include one or more of the following snippets to display your movies or shows on
     <?php snippet('trakt-favmovies'); ?>
     <?php snippet('trakt-favshows'); ?>
 
+Recently added a compact listing for my Now page, with an optional limit
+
+    <?php snippet('trakt-episodes-watched-compact', ['limit' => 3 ]) ?>
+
 ## Example 
 
 <img src="example-episodes.png" alt="Example episodes">
