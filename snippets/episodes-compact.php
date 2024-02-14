@@ -19,7 +19,7 @@ foreach ($json_a as $key => $value):
     
     $imgcall = "https://api.themoviedb.org/3/tv/".
         $value['show']['ids']['tmdb'].
-        "/images?api_key=". 
+        "/images?include_image_language=en,nl,null&&api_key=". 
         option('themoviedb.apiKey');
 
     $ch = curl_init($imgcall);
@@ -29,14 +29,15 @@ foreach ($json_a as $key => $value):
     $movieinfo = json_decode($rawdata, true); ?>
 
     <div class="block block--compact block--tv">
-        <?php if (array_key_exists('posters', $movieinfo) && $movieinfo['posters'] !== null): ?>
-        <a href="<?= $varlink ?>" title="<?= $value['show']['title'] ?> - S<?= str_pad($value['episode']['season'],'2','0',STR_PAD_LEFT) ?>E<?= str_pad($value['episode']['number'],'2','0',STR_PAD_LEFT) ?> <?= $value['episode']['title'] ?>">
-            <img class="block--img" 
-                width="450" height="500" loading="lazy"
-                src="<?= "https://image.tmdb.org/t/p/w500" . $movieinfo['posters'][0]['file_path'] ?>"
-                alt=""></a>
+        <?php if (count($movieinfo['posters'])): ?>
+            <a href="<?= $varlink ?>" title="<?= $value['show']['title'] ?> - S<?= str_pad($value['episode']['season'],'2','0',STR_PAD_LEFT) ?>E<?= str_pad($value['episode']['number'],'2','0',STR_PAD_LEFT) ?> <?= $value['episode']['title'] ?>">
+                <img class="block--img" 
+                    width="450" height="500" loading="lazy"
+                    src="<?= "https://image.tmdb.org/t/p/w500" . $movieinfo['posters'][0]['file_path'] ?>"
+                    alt="">
+            </a>
         <?php else: ?>
-        <a href="<?= $varlink ?>" class="block--fallback"></a>
+            <a href="<?= $varlink ?>" class="block--fallback"></a>
         <?php endif ?>
     </div>
 
