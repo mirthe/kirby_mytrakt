@@ -47,7 +47,7 @@ include('get-trakt.php'); ?>
             </p>
 
             <?php if($value['episode']['overview']): ?>
-                <p><?= mb_strimwidth($value['episode']['overview'], 0, 300, '&hellip;') ?></p>
+                <p class="desc"><?= mb_strimwidth($value['episode']['overview'], 0, 140, '&hellip;') ?></p>
             <?php endif ?>
 
             <ul class="genres">
