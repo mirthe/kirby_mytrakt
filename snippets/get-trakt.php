@@ -4,6 +4,7 @@
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $feedurl);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_USERAGENT, $site->title());
 
     $header = array("Content-type: application/json",
             "trakt-api-key: " . option('mirthe.mytrakt.apiKey'),
