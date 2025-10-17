@@ -24,7 +24,7 @@ include('get-trakt.php'); ?>
 
         $ch = curl_init($imgcall);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_USERAGENT, $site->title());
+        curl_setopt($ch, CURLOPT_USERAGENT, kirby()->site()->title());
         $rawdata = curl_exec($ch);
         curl_close($ch);
         $movieinfo = json_decode($rawdata, true); ?>
