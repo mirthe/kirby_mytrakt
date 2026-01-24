@@ -5,7 +5,7 @@ $feedurl = "https://api.trakt.tv/users/".
     option('mirthe.mytrakt.limit');
 include('get-trakt.php'); ?>
 
-<div class="masonry">
+<div class="grid">
 <?php $json_a = json_decode($feed, true);
 $counter = 0;
 foreach ($json_a as $key => $value):
