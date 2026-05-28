@@ -22,12 +22,7 @@ include('get-trakt.php'); ?>
             "/episode/" . $value['episode']['number'] .
             "?api_key=". option('themoviedb.apiKey'). "&append_to_response=images";
 
-        $ch = curl_init($imgcall);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_USERAGENT, kirby()->site()->title());
-        $rawdata = curl_exec($ch);
-        curl_close($ch);
-        $movieinfo = json_decode($rawdata, true); ?>
+        $movieinfo = get_img_from_themoviedb($imgcall); ?>
 
         <?php if (array_key_exists('still_path', $movieinfo) && $movieinfo['still_path'] !== null): ?>
         <a href="<?= $varlink ?>"><img class="block--img" width="500"

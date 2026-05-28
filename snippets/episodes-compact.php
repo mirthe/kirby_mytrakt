@@ -25,12 +25,7 @@ foreach ($json_a as $key => $value):
         "/images?include_image_language=en,nl,null&&api_key=". 
         option('themoviedb.apiKey');
 
-    $ch = curl_init($imgcall);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_USERAGENT, kirby()->site()->title());
-    $rawdata = curl_exec($ch);
-    curl_close($ch);
-    $movieinfo = json_decode($rawdata, true); ?>
+    $movieinfo = get_img_from_themoviedb($imgcall); ?>
 
     <div class="block block--compact block--tv">
         <?php if (count($movieinfo['posters'])): ?>

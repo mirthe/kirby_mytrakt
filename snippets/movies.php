@@ -17,12 +17,7 @@ foreach ($json_a as $key => $value): ?>
 
     // TODO retrieve rating?
 
-    $ch = curl_init($imgcall);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_USERAGENT, kirby()->site()->title());
-    $rawdata = curl_exec($ch);
-    curl_close($ch);
-    $movieinfo = json_decode($rawdata,true); ?>
+    $movieinfo = get_img_from_themoviedb($imgcall); ?>
 
     <?php if (array_key_exists('poster_path',$movieinfo) && $movieinfo['poster_path'] !== NULL): ?>
         <a href="<?= $varlink ?>"><img class="block--img" 

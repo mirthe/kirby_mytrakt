@@ -10,15 +10,9 @@ foreach ($json_a as $key => $value): ?>
         $value[$value['type']]['ids']['tmdb'] .
         "?api_key=". option('themoviedb.apiKey'). "&append_to_response=images";
 
-    $ch = curl_init($imgcall);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_USERAGENT, kirby()->site()->title());
-    $rawdata = curl_exec($ch);
-    curl_close($ch);
-    $movieinfo = json_decode($rawdata,true); ?>
+    $movieinfo = get_img_from_themoviedb($imgcall); ?>
 
-<?php // $varlink = "https://letterboxd.com/tmdb/" . $value[$value['type']]['ids']['tmdb'];
-$varlink = "https://trakt.tv/movies/" . $value[$value['type']]['ids']['slug'] ?>
+<?php $varlink = "https://trakt.tv/movies/" . $value[$value['type']]['ids']['slug'] ?>
 
 <div class="block block--film">
 
@@ -41,9 +35,6 @@ $varlink = "https://trakt.tv/movies/" . $value[$value['type']]['ids']['slug'] ?>
             <p><?= mb_strimwidth($movieinfo['overview'],0,400,'&hellip;') ?></p>        
         <?php endif ?>
 
-        <?php /* Notes zitten alleen in de IOS app begreep ik, Android en website volgen nog. Ooit.
-        <p><q><?= mb_strimwidth($value['notes'],0,300,'&hellip;') ?></q></p> */ ?>
-        
         <ul class="genres">
             <?php foreach ($movieinfo['genres'] as $genre) {
                 echo  '<li>'. $genre['name'] . "</li>";

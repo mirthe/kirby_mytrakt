@@ -10,12 +10,9 @@ foreach ($json_a as $key => $value): ?>
         $value[$value['type']]['ids']['tmdb'] .
         "?api_key=". option('themoviedb.apiKey'). "&append_to_response=images";
 
-    $ch = curl_init($imgcall);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_USERAGENT, kirby()->site()->title());
-    $rawdata = curl_exec($ch);
-    curl_close($ch);
-    $movieinfo = json_decode($rawdata,true); ?>
+    $movieinfo = get_img_from_themoviedb($imgcall); ?>
+
+
 
 <?php $varlink = "https://trakt.tv/shows/" . $value[$value['type']]['ids']['slug'] ?>
 
