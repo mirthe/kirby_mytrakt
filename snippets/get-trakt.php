@@ -1,28 +1,37 @@
-<?php if (!file_exists($localfile) || time()-filemtime($localfile) > 1800 || isset($_GET['forcecache'])) {
-// when file is not available, older than 30 minutes, or forced
+<?php
+$cache = kirby()->cache('mirthe.mytrakt');
+$username = strtolower(option('mirthe.mytrakt.username'));
+$cacheKey = 'trakt-' . $username . '-' . $cachesection;
+$feed = $cache->get($cacheKey);
+$force = isset($_GET['forcecache']);
+
+if ($feed === null || $force) {
+    $previousFeed = $feed;
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $feedurl);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_USERAGENT, kirby()->site()->title());
 
-    $header = array("Content-type: application/json",
-            "trakt-api-key: " . option('mirthe.mytrakt.apiKey'),
-            "trakt-api-version: 2");
-    curl_setopt($ch,CURLOPT_HTTPHEADER, $header); 
+    $header = [
+        'Content-type: application/json',
+        'trakt-api-key: ' . option('mirthe.mytrakt.apiKey'),
+        'trakt-api-version: 2'
+    ];
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 
     $feed = curl_exec($ch);
+    $error = curl_errno($ch);
     curl_close($ch);
 
-    $fp = fopen($localfile, 'w');
-    fwrite($fp, $feed);
-    fclose($fp);
-
-    // echo '<p>Nieuwe feed opgehaald.</p>';
-
-    // TODO cache opschonen voor deze pagina, maar hoe is die syntax!?
-    // $kirby->cache('page')->series()->flush();
-
-} else {
-    $feed = file_get_contents($localfile);
+    if ($feed !== false && $error === 0 && $feed !== '') {
+        $cache->set($cacheKey, $feed, 1800);
+    } else {
+        $feed = $previousFeed;
+    }
 }
+
+if ($feed === null) {
+    $feed = '[]';
+}
+

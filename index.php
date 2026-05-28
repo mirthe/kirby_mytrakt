@@ -4,7 +4,8 @@ Kirby::plugin('mirthe/mytrakt', [
     'options' => [
         'apiKey' => option('trakt.apiKey'),
         'username' => option('trakt.username'),
-        'limit' => 21
+        'limit' => 21,
+        'cache' => true
     ],
     'snippets' => [
         'trakt-episodes-watched' => __DIR__ . '/snippets/episodes.php',

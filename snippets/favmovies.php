@@ -1,4 +1,4 @@
-<?php $localfile =  __DIR__ . "/favmovies.json";
+<?php $cachesection =  "favmovies";
 $feedurl = "https://api.trakt.tv/users/". option('mirthe.mytrakt.username') ."/recommendations/movies/title";
 include('get-trakt.php'); ?>
 

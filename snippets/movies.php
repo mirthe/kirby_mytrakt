@@ -1,4 +1,4 @@
-<?php $localfile =  __DIR__ . "/movies.json";
+<?php $cachesection =  "movies";
 $feedurl = "https://api.trakt.tv/users/". option('mirthe.mytrakt.username') ."/history/movies/?extended=full&limit=" . option('mirthe.mytrakt.limit');
 include('get-trakt.php'); ?>
 
