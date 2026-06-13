@@ -38,7 +38,7 @@ include('get-trakt.php'); ?>
             <p><a href="<?= $varlink ?>"><?= $value['episode']['season'] ?>x<?= $value['episode']['number'] ?>
                     <?= $value['episode']['title'] ?></a><br>
                 <a href="https://www.imdb.com/title/<?= $value['show']['ids']['imdb'] ?>"
-                    class="subtiel" title="Bekijken op IMDb"><?= $value['show']['title'] ?>
+                    class="subtiel" title="<?= t('mirthe.mytrakt.view-on-imdb') ?>"><?= $value['show']['title'] ?>
                     <small>(<?= $value['show']['year'] ?>)</small></a><br>
             </p>
 

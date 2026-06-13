@@ -30,7 +30,7 @@ foreach ($json_a as $key => $value): ?>
 
     <div class="block--body">
 
-        <p><a href="<?= $varlink ?>" class="subtiel" title="Bekijken op IMDb"><?= $value['movie']['title'] ?>
+        <p><a href="<?= $varlink ?>" class="subtiel" title="<?= t('mirthe.mytrakt.view-on-imdb') ?>"><?= $value['movie']['title'] ?>
         <small>(<?= $value['movie']['year'] ?>)</small></a><br>
         
         <p><strong><?= $value['movie']['tagline'] ?></strong></p>
