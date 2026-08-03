@@ -2,6 +2,12 @@
 
 This plugin allows you to show recently watched and favorite shows and movies for a Trakt account on your Kirby site
 
+## Update 
+
+Since August 2026 you need to be Trakt VIP to create an app to create an API key. 
+
+See also https://app.trakt.tv/settings/apps/api?mode=show and https://www.reddit.com/r/trakt/comments/1vb2gyc/api_deleted_vip_required_to_be_a_developer_now
+
 ## Git submodule
 
 ```
